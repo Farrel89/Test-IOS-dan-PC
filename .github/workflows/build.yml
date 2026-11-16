@@ -11,6 +11,7 @@ jobs:
       - run: pip install lazurite
       - shell: pwsh
         run: Invoke-WebRequest -Uri "https://github.com/devendrn/newb-shader/releases/download/dev/shaderc-win-x64.exe" -OutFile shaderc.exe
+      - run: mkdir output
       - run: lazurite build shader -p android windows ios -o output --shaderc "${{ github.workspace }}/shaderc.exe"
       - uses: actions/upload-artifact@v4
         if: always()
