@@ -1,0 +1,11 @@
+{
+  "base_profile": {
+    "platforms": ["ESSL_310", "Direct3D_SM50", "Metal"],
+    "merge_source": ["../vanilla"]
+  },
+  "profiles": {
+    "android": { "platforms": ["ESSL_310"] },
+    "windows": { "platforms": ["Direct3D_SM50"] },
+    "ios": { "platforms": ["Metal"] }
+  }
+}
