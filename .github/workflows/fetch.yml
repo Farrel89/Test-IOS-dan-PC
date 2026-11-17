@@ -1,0 +1,17 @@
+name: fetch-vanilla
+on: workflow_dispatch
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - run: git clone --depth 1 https://github.com/veka0/mcbe-shader-codebase.git code
+      - run: |
+          mkdir out
+          cp -r code/materials/Actor out/Actor
+          cp -r code/materials/RenderChunk out/RenderChunk
+          git -C code log -1 --format="%H %cd" > out/VERSION.txt
+          ls -R out | head -80
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vanilla-source
+          path: out
